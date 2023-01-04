@@ -72,3 +72,60 @@ Object.is(trendRate, 0)     // false
 ```
 
 ---
+## Coercion
+- Coercion means type conversion.
+
+- toNumber()
+```javascript
+toNumber("")    // 0
+toNumber("0")    // 0
+toNumber("-0")    // -0
+toNumber(" 009 ")    // 009
+toNumber("3.14159")    // 3.14159
+toNumber("0.")    // 0
+toNumber(".0")    // 0
+toNumber(".")    // NaN
+toNumber("0xaf")    // 175
+toNumber(true)    // 1
+toNumber(false)    // 0
+toNumber(null)    // 0
+toNumber(undefined)    // NaN
+```
+ ===
+ - toBoolean(): returns false only if the value is one of these values without doing any coercion..
+    - ""
+    - 0, -0
+    - null
+    - NaN
+    - false
+    - undefined
+> Note that empty strings return 0
+
+## Cases of Coercion
+- When using template strings, you're using coercion.
+```javascript
+var num = 12
+console.log(`Number = ${num}`)
+```
+
+## Corner Cases of Coercion
+```javascript
+Number("")              // 0
+Number("    \t\n")      // 0
+Number(null)            // 0
+Number(undefined)       // NaN
+Number([])              // 0
+Number([1, 2, 3])       // NaN
+Number([null])          // 0
+Number(undefined)       // 0
+Number({})              // NaN
+
+String(-0)              // "0"
+String(null)            // "null"
+String(undefined)       // "undefined"
+String([null])          // ""
+String([undefined])     // ""
+
+Boolean(new Boolean(false)) // true
+```
+--- 
