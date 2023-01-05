@@ -72,7 +72,7 @@ Object.is(trendRate, 0)     // false
 ```
 
 ---
-## Coercion
+### Coercion
 - Coercion means type conversion.
 
 - toNumber()
@@ -101,14 +101,14 @@ toNumber(undefined)    // NaN
     - undefined
 > Note that empty strings return 0
 
-## Cases of Coercion
+### Cases of Coercion
 - When using template strings, you're using coercion.
 ```javascript
 var num = 12
 console.log(`Number = ${num}`)
 ```
 
-## Corner Cases of Coercion
+### Corner Cases of Coercion
 ```javascript
 Number("")              // 0
 Number("    \t\n")      // 0
@@ -128,4 +128,27 @@ String([undefined])     // ""
 
 Boolean(new Boolean(false)) // true
 ```
---- 
+
+> People write **comments** about **how** and they forget about **why**
+
+### Equality
+```javascript
++0 === -0   // true
+NaN === NaN // false
+
+null == undefined // true
+```
+
+- For ==
+    - If types are the same use ===
+    - null or undefined are equal.
+    - Non primitives will be coerced using toPrimitive()
+    - Uses toNumber() for coercion.
+
+- Avoid:
+    1. == with 0 or "" (or even "  ")
+    2. == with non-primitives
+    3. == true or == false
+    4. using == when you don't know the types
+
+
