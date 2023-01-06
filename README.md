@@ -139,7 +139,7 @@ NaN === NaN // false
 null == undefined // true
 ```
 
-- For ==
+- == algorithm summary
     - If types are the same use ===
     - null or undefined are equal.
     - Non primitives will be coerced using toPrimitive()
@@ -151,4 +151,45 @@ null == undefined // true
     3. == true or == false
     4. using == when you don't know the types
 
+
+---
+### Scope & Expressions
+> If not in "use strict" mode, **undeclared** won't be an error.
+
+- You should prefer the named function expression over the anonymouns function expression
+    1. Reliable function self-reference (recursion, etc).
+    2. More debuggable stack traces.
+    3. More self-documenting code.
+
+---
+### Closure
+> **lexical scope** refers to it's current surrounding scope and no further.
+
+> **Closure** is when a function 'remembers' its lexical scope even when the function is executed outside that lexical scope.
+
+```javascript
+// Note: Closure capture variables not values
+// The following prints i:4, 3 times    // OOPS!
+for (var i = 1; i <= 3; i++) {
+    setTimeout(function() {
+        console.log(`i: ${i}`)
+    }, i * 1000)
+}
+
+// You can use let instead of var to capture the values
+// The following prints i:1, i:2 & i:3
+for (let i = 1; i <= 3; i++) {
+    setTimeout(function() {
+        console.log(`i: ${i}`)
+    }, i * 1000)
+}
+
+// If you wanna keep using var, then assign i to a variable usig let
+for (var i = 1; i <= 3; i++) {
+    let j = i
+    setTimeout(function() {
+        console.log(`j: ${j}`)
+    }, j * 1000)
+}
+```
 
